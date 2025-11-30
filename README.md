@@ -1,6 +1,6 @@
 # Prediction Market (Next.js)
 
-A minimal on-chain prediction market interface built with Next.js and Chainlink Price Feeds. The application displays a live ETH/USD chart using real data from the Chainlink Aggregator contract and provides a modular UI for prediction market interactions.
+An on-chain prediction market interface built with Next.js and Chainlink Price Feeds. The application displays a live ETH/USD chart using real data from the Chainlink Aggregator contract and provides a modular UI for prediction market interactions.
 
 ## Features
 
@@ -18,54 +18,66 @@ Next.js (App Router), TypeScript, viem, Recharts.
 
 Create a `.env.local` file:
 
-NEXT_PUBLIC_RPC_URL=https://mainnet.infura.io/v3/
-<YOUR_KEY>
+```env
+NEXT_PUBLIC_RPC_URL=https://mainnet.infura.io/v3/<YOUR_KEY>
 NEXT_PUBLIC_CHAIN_ID=1
 NEXT_PUBLIC_CHAINLINK_ETHUSD_ADDRESS=0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419
+```
 
 ## Getting Started
 
 Install dependencies:
 
+```bash
 npm install
+```
 
 Start the development server:
 
+```bash
 npm run dev
+```
 
 Open `http://localhost:3000` in a browser.
 
 ## Project Structure
 
+```
 src/
-└─ abi/
-├─ AggregatorV3Interface.json
-├─ SimplePredictionMarket.json
-└─ components/
-├─ LivePriceChart.tsx
-├─ MarketCard.tsx
-├─ BetPanel.tsx
-├─ ResultPanel.tsx
-└─ WalletButton.tsx
+├── abi/
+│   ├── AggregatorV3Interface.json
+│   └── SimplePredictionMarket.json
+└── components/
+    ├── LivePriceChart.tsx
+    ├── MarketCard.tsx
+    ├── BetPanel.tsx
+    ├── ResultPanel.tsx
+    └── WalletButton.tsx
+
 app/
-├─ layout.tsx
-├─ page.tsx
-└─ globals.css
+├── layout.tsx
+├── page.tsx
+└── globals.css
+```
 
 ## Chainlink Price Feed (Core Logic)
 
+```typescript
 const result = await client.readContract({
-address: process.env.NEXT_PUBLIC_CHAINLINK_ETHUSD_ADDRESS as 0x${string},
-abi: AggregatorV3Interface,
-functionName: "latestRoundData",
+  address: process.env.NEXT_PUBLIC_CHAINLINK_ETHUSD_ADDRESS as `0x${string}`,
+  abi: AggregatorV3Interface,
+  functionName: "latestRoundData",
 });
 
 const price = Number(result[1]) / 1e8;
+```
 
 ## Deployment
 
+```bash
 npm run build
 npm run start
+```
 
 ## License
 
