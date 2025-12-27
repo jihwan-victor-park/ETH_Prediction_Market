@@ -1,7 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 // FastAPI backend URL - you can change this to your backend URL
-const FASTAPI_URL = process.env.FASTAPI_URL || "http://localhost:8000";
+const FASTAPI_URL =
+  process.env.FASTAPI_URL || 'https://eth-prediction-market-2.onrender.com';
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,9 +10,9 @@ export async function POST(request: NextRequest) {
 
     // Forward the request to FastAPI
     const response = await fetch(`${FASTAPI_URL}/chat`, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(body),
     });
@@ -24,11 +25,12 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error("Chat API error:", error);
+    console.error('Chat API error:', error);
 
     return NextResponse.json(
       {
-        response: "⚠️ Unable to connect to AI backend. Please make sure the FastAPI server is running on port 8000.",
+        response:
+          '⚠️ Unable to connect to AI backend. Please make sure the FastAPI server is running on port 8000.',
         timestamp: new Date().toISOString(),
       },
       { status: 500 }
