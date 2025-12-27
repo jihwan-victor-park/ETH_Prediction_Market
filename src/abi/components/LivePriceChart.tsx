@@ -36,7 +36,11 @@ export default function LivePriceChart({
   const [latestPrice, setLatestPrice] = useState<number | null>(null);
 
   useEffect(() => {
-    const client = createPublicClient({ chain: mainnet, transport: http() });
+    const rpcUrl = process.env.NEXT_PUBLIC_RPC_URL || "https://eth.llamarpc.com";
+    const client = createPublicClient({
+      chain: mainnet,
+      transport: http(rpcUrl)
+    });
     const contractAddress =
       "0x5f4ec3df9cbd43714fe2740f5e3616155c5b8419" as const; // Chainlink ETH/USD price feed
 

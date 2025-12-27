@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Header({
   account,
   onConnect,
@@ -9,19 +11,19 @@ export default function Header({
     <header className="w-full border-b border-[var(--border-primary)] bg-[var(--bg-primary)] sticky top-0 z-50">
       <div className="max-w-[1400px] mx-auto px-8 py-6 flex justify-between items-center">
         <div className="flex items-center gap-12">
-          <h1 className="text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+          <Link href="/" className="text-2xl font-semibold tracking-tight text-[var(--text-primary)] hover:opacity-80 transition-opacity">
             PREDICTION
-          </h1>
+          </Link>
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link href="/" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               Market
-            </a>
-            <a href="#" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            </Link>
+            <a href="#" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors opacity-50 cursor-not-allowed">
               Portfolio
             </a>
-            <a href="#" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <Link href="/history" className="text-xs uppercase tracking-wider text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
               History
-            </a>
+            </Link>
           </nav>
         </div>
 

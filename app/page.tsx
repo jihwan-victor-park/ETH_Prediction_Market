@@ -5,6 +5,7 @@ import { ethers, BrowserProvider, Contract } from "ethers";
 import abi from "../src/abi/SimplePredictionMarket.json";
 import Header from "../src/abi/components/Header";
 import LivePriceChart from "../src/abi/components/LivePriceChart";
+import ChatBot from "../src/components/ChatBot";
 
 declare global {
   interface Window {
@@ -781,6 +782,9 @@ export default function Home() {
           </div>
         )}
       </div>
+
+      {/* Floating AI Chatbot */}
+      <ChatBot />
     </main>
   );
 }
